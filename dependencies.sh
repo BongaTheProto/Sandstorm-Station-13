@@ -5,10 +5,10 @@
 
 # byond version
 export BYOND_MAJOR=514
-export BYOND_MINOR=1557
+export BYOND_MINOR=1556
 
 #rust_g git tag
-export RUST_G_VERSION=0.5.0
+export RUST_G_VERSION=0.4.10
 
 #node version
 export NODE_VERSION=12
@@ -21,7 +21,7 @@ export SPACEMAN_DMM_VERSION=suite-1.7.1
 export PYTHON_VERSION=3.6.8
 
 # Auxmos git tag
-export AUXMOS_VERSION=v0.2.8
+export AUXMOS_VERSION=v0.2.3
 
 # Extools git tag
 export EXTOOLS_VERSION=v0.0.7
