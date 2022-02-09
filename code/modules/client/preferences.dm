@@ -178,7 +178,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/clientfps = 0
 
-	var/parallax
+	var/parallax = PARALLAX_INSANE
 
 	var/ambientocclusion = TRUE
 	///Should we automatically fit the viewport?
@@ -844,9 +844,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Ghost PDA:</b> <a href='?_src_=prefs;preference=ghost_pda'>[(chat_toggles & CHAT_GHOSTPDA) ? "All Messages" : "Nearest Creatures"]</a><br>"
 			dat += "<b>Window Flashing:</b> <a href='?_src_=prefs;preference=winflash'>[(windowflashing) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
-			//SKYRAT CHANGES BEGIN
-			dat += "<b>Play Megafauna Music:</b> <a href='?_src_=prefs;preference=hear_megafauna'>[(toggles & SOUND_MEGAFAUNA) ? "Enabled":"Disabled"]</a><br>"
-			//SKYRAT CHANGES END
 			dat += "<b>Play Admin MIDIs:</b> <a href='?_src_=prefs;preference=hear_midis'>[(toggles & SOUND_MIDI) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>See Pull Requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Enabled":"Disabled"]</a><br>"
@@ -2936,11 +2933,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("hear_midis")
 					toggles ^= SOUND_MIDI
 
-				//SKYRAT CHANGES BEGIN - Megafauna music
-				if("hear_megafauna")
-					toggles ^= SOUND_MEGAFAUNA
-				//SKYRAT CHANGES END
-
 				if("verb_consent") // Skyrat - ERP Mechanic Addition
 					toggles ^= VERB_CONSENT // Skyrat - ERP Mechanic Addition
 
@@ -2990,14 +2982,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					toggles ^= MIDROUND_ANTAG
 
 				if("parallaxup")
-					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
-					if (parent && parent.mob && parent.mob.hud_used)
-						parent.mob.hud_used.update_parallax_pref(parent.mob)
+					parallax = WRAP(parallax + 1, PARALLAX_DISABLE, PARALLAX_INSANE + 1)
+					parent?.parallax_holder?.Reset()
 
 				if("parallaxdown")
-					parallax = WRAP(parallax - 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
-					if (parent && parent.mob && parent.mob.hud_used)
-						parent.mob.hud_used.update_parallax_pref(parent.mob)
+					parallax = WRAP(parallax - 1, PARALLAX_DISABLE, PARALLAX_INSANE + 1)
+					parent?.parallax_holder?.Reset()
 
 				// Citadel edit - Prefs don't work outside of this. :c
 

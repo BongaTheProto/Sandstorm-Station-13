@@ -5,9 +5,10 @@
 
 #define CLICKCATCHER_PLANE -99
 
-#define PLANE_SPACE -95
+#define PLANE_SPACE -98
 #define PLANE_SPACE_RENDER_TARGET "PLANE_SPACE"
-#define PLANE_SPACE_PARALLAX -90
+
+#define PLANE_SPACE_PARALLAX -95
 #define PLANE_SPACE_PARALLAX_RENDER_TARGET "PLANE_SPACE_PARALLAX"
 
 #define OPENSPACE_LAYER 17 //Openspace layer over all
@@ -37,9 +38,6 @@
 #define FIELD_OF_VISION_VISUAL_RENDER_TARGET "FIELD_OF_VISION_VISUAL_PLANE"
 
 #define CHAT_PLANE -1 //We don't want heard messages to be hidden by FoV.
-
-/// Plane for balloon text (text that fades up)
-#define BALLOON_CHAT_PLANE -1.2
 
 #define CHAT_LAYER 12.0001 // Do not insert layers between these two values
 #define CHAT_LAYER_MAX 12.9999
@@ -155,6 +153,10 @@
 #define CAMERA_STATIC_PLANE 19
 #define CAMERA_STATIC_LAYER 19
 #define CAMERA_STATIC_RENDER_TARGET "CAMERA_STATIC_PLANE"
+
+/// Plane for balloon text (text that fades up)
+/// It's over lighting and every other crap because this is nearly as important as hud content and only visible to the user.
+#define BALLOON_CHAT_PLANE 20
 
 //HUD layer defines
 
