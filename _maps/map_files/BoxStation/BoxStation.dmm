@@ -12676,9 +12676,7 @@
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
 "aCW" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
+/obj/machinery/stasis,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aCX" = (
@@ -18696,6 +18694,7 @@
 /obj/structure/table,
 /obj/item/storage/crayons,
 /obj/item/storage/crayons,
+/obj/item/chisel,
 /turf/open/floor/plasteel,
 /area/commons/storage/art)
 "aTH" = (
@@ -30341,9 +30340,7 @@
 /turf/open/floor/plasteel/dark,
 /area/medical/surgery)
 "bwD" = (
-/obj/machinery/sleeper{
-	dir = 8
-	},
+/obj/machinery/stasis,
 /turf/open/floor/plasteel,
 /area/medical/medbay/central)
 "bwE" = (
@@ -32068,14 +32065,12 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "bAq" = (
-/obj/machinery/sleeper{
-	dir = 8
-	},
 /obj/machinery/camera{
 	c_tag = "Medbay Treatment Center";
 	dir = 8;
 	network = list("ss13","medbay")
 	},
+/obj/machinery/stasis,
 /turf/open/floor/plasteel,
 /area/medical/medbay/central)
 "bAr" = (
