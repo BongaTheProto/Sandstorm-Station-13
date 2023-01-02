@@ -364,6 +364,18 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(length(old_flavor_text) && !length(features["feature_flavor_text"]))
 			features["feature_flavor_text"] = old_flavor_text
 
+	// hey what happened to 55
+
+	// dullahans as a species cease to exist
+	if(current_version < 56)
+		var/species_id = S["species"]
+		if(species_id == SPECIES_DULLAHAN)
+			S["species"] = SPECIES_HUMAN
+			if(islist(S["all_quirks"]))
+				S["all_quirks"] += "Dullahan"
+			else
+				S["all_quirks"] = list("Dullahan")
+
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)
 		return
@@ -462,6 +474,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["preferred_chaos"] >> preferred_chaos
 	S["auto_ooc"] >> auto_ooc
 	S["no_tetris_storage"] >> no_tetris_storage
+	S["recoil_screenshake"] >> recoil_screenshake
 
 	//favorite outfits
 	S["favorite_outfits"] >> favorite_outfits
@@ -521,6 +534,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	cit_toggles = sanitize_integer(cit_toggles, 0, 16777215, initial(cit_toggles))
 	auto_ooc = sanitize_integer(auto_ooc, 0, 1, initial(auto_ooc))
 	no_tetris_storage = sanitize_integer(no_tetris_storage, 0, 1, initial(no_tetris_storage))
+	recoil_screenshake = sanitize_integer(recoil_screenshake, 0, 800, initial(recoil_screenshake))
 	key_bindings = sanitize_islist(key_bindings, list())
 	modless_key_bindings = sanitize_islist(modless_key_bindings, list())
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
@@ -647,6 +661,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["preferred_chaos"], preferred_chaos)
 	WRITE_FILE(S["auto_ooc"], auto_ooc)
 	WRITE_FILE(S["no_tetris_storage"], no_tetris_storage)
+	WRITE_FILE(S["recoil_screenshake"], recoil_screenshake)
 
 	//SKYRAT CHANGES BEGIN
 	WRITE_FILE(S["see_chat_emotes"], see_chat_emotes)
@@ -918,7 +933,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	shirt_color = sanitize_hexcolor(shirt_color, 6, FALSE, initial(shirt_color))
 	socks = sanitize_inlist(socks, GLOB.socks_list)
 	socks_color = sanitize_hexcolor(socks_color, 6, FALSE, initial(socks_color))
-	age = sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
+	age = sanitize_integer(age, AGE_MIN, AGE_MAX_INPUT, initial(age))
 	hair_color = sanitize_hexcolor(hair_color, 6, FALSE)
 	facial_hair_color = sanitize_hexcolor(facial_hair_color, 6, FALSE)
 	grad_style = sanitize_inlist(grad_style, GLOB.hair_gradients_list, "None")
